@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "../../../lib/prisma";
 import ConsumpionMethod from "./components/consumption-method";
@@ -27,13 +28,9 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
           height={100}
           className="animate-blur-in hover:scale-110 transform transition duration-300 ease-in-out cursor-pointer -mt-30"
         />
-        <h2 className="mt-3 font-bold text-3xl text-red-600 italic">
-          {restaurant?.name}
-        </h2>
+
         <div className="mt-20 text-center px-8 space-y-2">
-          <h1 className="text-2xl font-semibold text-amber-500">
-            Seja bem-vindo!!
-          </h1>
+          <h1 className="text-2xl font-semibold">Seja bem-vindo!!</h1>
           <span className="text-gray-500 text-sm">
             Escolha como prefere aproveitar sua refeição. <br />
             Estamos aqui para oferecer praticidade e sabor em cada detalhe!
@@ -55,9 +52,12 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
             imageUrl="/sacola.png"
           />
         </div>
+        <div className="mt-20 button px-4 py-2 hover:bg-red-500">
+          <Link href="/">Escolher outro Restaurante</Link>
+        </div>
       </div>
       <div className="absolute bottom-0 left-0 bg-zinc-300 p-4 text-zinc-600 w-full text-center">
-        {restaurant.description} 📍
+        {restaurant.description}
       </div>
     </div>
   );

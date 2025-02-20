@@ -18,11 +18,9 @@ const RestaurantItems = ({ restaurants }: RestaurantItemsProps) => {
             width={82}
             className="mx-auto mt-2"
           />
-          <h1 className="mt-1 text-lg font-semibold">{restaurants.name}</h1>
         </div>
-        <p className=" text-gray-500">{restaurants.description} 📍</p>
-
-        <div className="mt-3 text-sm w-full px-4 py-1 button click">
+        <p className=" text-gray-500 mt-3">{restaurants.description}.</p>
+        <div className="mt-3 text-sm w-full px-4 py-1 button hover:bg-red-500 click">
           <Link className="" href={`/${restaurants.slug}`}>
             Começar
           </Link>
