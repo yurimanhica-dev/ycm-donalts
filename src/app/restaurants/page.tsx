@@ -1,7 +1,7 @@
 import { Clock, StarIcon } from "lucide-react";
 import Image from "next/image";
+import Header from "../[slug]/menu/components/header";
 import CategoryList from "./components/categorylist";
-import Header from "./components/header";
 import ProductList from "./components/product-list";
 
 const Restaurant = () => {
