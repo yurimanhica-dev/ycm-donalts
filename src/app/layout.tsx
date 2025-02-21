@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { CartProvider } from "./[slug]/menu/context/cart";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -18,7 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`}>{children}</body>
+      <body
+        className={`${poppins.className} antialiased  [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar]:h-2  [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-zinc-300 [&::-webkit-scrollbar-track]:bg-zinc-100`}
+      >
+        <CartProvider>{children}</CartProvider>
+      </body>
     </html>
   );
 }

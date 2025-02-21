@@ -20,7 +20,7 @@
 }
 
 .button {
-  @apply border border-zinc-300 rounded-full text-zinc-400  cursor-pointer hover:border-none hover:text-white shadow;
+  @apply border border-zinc-300 rounded-full text-zinc-800  cursor-pointer hover:border-none hover:text-white shadow;
 }
 
 .click {
@@ -118,6 +118,9 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground h-full;
+  }
+  html {
+    @apply h-full;
   }
 }
