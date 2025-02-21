@@ -34,8 +34,26 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const addProduct = (product: CartProduct) => {
-    setProducts((prev) => [...prev, product]);
+    const existingProduct = products.some(
+      (prevProduct) => prevProduct.id === product.id
+    );
+    if (!existingProduct) {
+      return setProducts((prev) => [...prev, product]);
+    }
+
+    setProducts((prev) => {
+      return prev.map((prevProduct) => {
+        if (prevProduct.id === product.id) {
+          return {
+            ...prevProduct,
+            quantity: prevProduct.quantity + product.quantity,
+          };
+        }
+        return prevProduct;
+      });
+    });
   };
+
   return (
     <CartContext.Provider
       value={{
