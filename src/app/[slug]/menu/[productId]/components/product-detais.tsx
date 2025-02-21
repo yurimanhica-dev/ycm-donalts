@@ -44,7 +44,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   return (
     <>
       <div className="-mt-6 rounded-4xl bg-white p-5 z-50 relative w-full h-full flex flex-col flex-auto">
-        <div className="flex-auto">
+        <div className="flex-auto h-full">
           <div className="flex items-center gap-2">
             <Image
               src={product.restaurant.avatarImageUrl}
@@ -103,7 +103,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           </div>
         </div>
         <button
-          className="mt-6 button bg-amber-500 !text-white click w-full px-8 py-2"
+          className="mt-4 button bg-amber-500 !text-white click w-full px-8 py-2"
           onClick={handleAddProductToCart}
         >
           Adicionar á Sacola
