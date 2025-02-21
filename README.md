@@ -1,8 +1,8 @@
-# � FastFood Finder 🍔
+# FastFood 🍕
 
-![FastFood Banner](https://via.placeholder.com/1200x400.png?text=FastFood+Finder+Banner)
+![FastFood Banner](https://dbmib2q8rj.ufs.sh/f/Lm6xK3J7O1CLMPZPlU2GhbyvKOVYzPGHngrXQA9UcJLpslTB)
 
-Bem-vindo ao **FastFood Finder**! � Este projeto foi desenvolvido para ajudar você a encontrar o fast food mais rápido para suas refeições. Com uma interface intuitiva e funcionalidades modernas, você pode escolher entre diversos restaurantes, decidir se deseja comer no local ou levar, e explorar os produtos disponíveis.
+Bem-vindo ao **FastFood.**! Este projeto foi desenvolvido para ajudar você a encontrar o fast food mais rápido para suas refeições. Com uma interface intuitiva e funcionalidades modernas, você pode escolher entre diversos restaurantes, decidir se deseja comer no local ou levar, e explorar os produtos disponíveis.
 
 ---
 
@@ -52,3 +52,15 @@ Bem-vindo ao **FastFood Finder**! � Este projeto foi desenvolvido para ajudar 
    - Adicione itens ao carrinho e finalize o pedido.
 
 ---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+---
+
+Desenvolvido por [Yuri Manhiça](https://github.com/yurimanhica-dev) . 🚀
+
+## 🌟 Créditos: 
+
+[Felipe Rocha] (https://github.com/fullstackclubeducacao) pela Full Stack Club
