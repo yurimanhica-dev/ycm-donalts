@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../context/cart";
 import CartSheet from "./Cart-sheet";
 
-interface ProductDetaisProps {
+interface ProductDetailsProps {
   product: Prisma.ProductGetPayload<{
     include: {
       restaurant: {
@@ -22,8 +22,8 @@ interface ProductDetaisProps {
   }>;
 }
 
-const ProductDetais = ({ product }: ProductDetaisProps) => {
-  const { toggleCart } = useContext(CartContext);
+const ProductDetails = ({ product }: ProductDetailsProps) => {
+  const { toggleCart, addProduct } = useContext(CartContext);
 
   const [quantity, setQuantity] = useState<number>(1);
 
@@ -39,6 +39,7 @@ const ProductDetais = ({ product }: ProductDetaisProps) => {
     setQuantity((prev) => prev + 1);
   };
   const handleAddProductToCart = () => {
+    addProduct({ ...product, quantity });
     toggleCart();
   };
   return (
@@ -115,4 +116,4 @@ const ProductDetais = ({ product }: ProductDetaisProps) => {
   );
 };
 
-export default ProductDetais;
+export default ProductDetails;
