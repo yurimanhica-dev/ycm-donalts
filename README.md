@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# � FastFood Finder 🍔
 
-## Getting Started
+![FastFood Banner](https://via.placeholder.com/1200x400.png?text=FastFood+Finder+Banner)
 
-First, run the development server:
+Bem-vindo ao **FastFood Finder**! � Este projeto foi desenvolvido para ajudar você a encontrar o fast food mais rápido para suas refeições. Com uma interface intuitiva e funcionalidades modernas, você pode escolher entre diversos restaurantes, decidir se deseja comer no local ou levar, e explorar os produtos disponíveis.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📋 Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **📍 Localização de Restaurantes**: Veja os restaurantes disponíveis e suas localizações em um mapa interativo.
+- **🍽️ Escolha de Modalidade**: Decida se deseja comer no local ou levar.
+- **📜 Cardápio Digital**: Explore os produtos disponíveis em cada restaurante.
+- **🛒 Carrinho de Compras**: Adicione produtos ao carrinho e finalize seu pedido.
+- **🚚 Status de Embalagem**: Saiba se o pedido será embalado para viagem ou servido no local.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tecnologias Utilizadas
 
-To learn more about Next.js, take a look at the following resources:
+- **🌐 Frontend**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  - ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)
+  - ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?logo=html5&logoColor=white)
+  - ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
+  - ![Next.js](https://img.shields.io/badge/-Next.js-000000?logo=next.js&logoColor=white)
+  - ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black)
+  - ![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white)
+  - ![shadcn/ui](https://img.shields.io/badge/-shadcn/ui-000000?logo=ui&logoColor=white)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **📦 Backend**:
+  - ![Prisma](https://img.shields.io/badge/-Prisma-2D3748?logo=prisma&logoColor=white)
+  - ![NeonDB](https://img.shields.io/badge/-NeonDB-00BFFF?logo=postgresql&logoColor=white)
+  - ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?logo=postgresql&logoColor=white)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎯 Como Funciona
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Tela Inicial**:
+
+   - Veja os restaurantes disponíveis e suas localizações.
+   - Escolha um restaurante para ver o cardápio.
+
+2. **Modalidade de Consumo**:
+
+   - Escolha entre comer no local ou levar.
+   - Saiba se o pedido será embalado para viagem.
+
+3. **Cardápio e Carrinho**:
+   - Navegue pelos produtos disponíveis.
+   - Adicione itens ao carrinho e finalize o pedido.
+
+---
