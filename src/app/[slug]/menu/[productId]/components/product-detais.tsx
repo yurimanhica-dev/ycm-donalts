@@ -1,6 +1,5 @@
 "use client";
 
-import { ScrollArea } from "@/app/components/ui/scroll-area";
 import { formatCurrency } from "@/helpers/format-currency";
 import { Prisma } from "@prisma/client";
 import { ChevronLeftIcon, ChevronRightIcon, Circle, Soup } from "lucide-react";
@@ -44,8 +43,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   };
   return (
     <>
-      <div className="-mt-6 rounded-4xl bg-white p-5 z-50 relative w-full h-full flex flex-col flex-auto overflow-hidden">
-        <div className="flex-auto overflow-hidden">
+      <div className="-mt-6 rounded-4xl bg-white p-5 z-50 relative w-full h-full flex flex-col flex-auto">
+        <div className="flex-auto">
           <div className="flex items-center gap-2">
             <Image
               src={product.restaurant.avatarImageUrl}
@@ -77,32 +76,31 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
               </button>
             </div>
           </div>
-          <ScrollArea className="h-full mt-5">
-            <div>
-              <h3 className="font-semibold text-lg">Sobre</h3>
-              <p className="mt-1 text-zinc-500">{product.description}</p>
-              <div className="mt-6"></div>
-              {product.ingredients?.length > 0 && (
-                <>
-                  <h3 className="font-semibold text-lg flex items-center gap-2 mb-2">
-                    <Soup />
-                    Ingredientes
-                  </h3>
-                  <ul>
-                    {product.ingredients?.map((ingredient) => (
-                      <li
-                        key={ingredient}
-                        className="mt-1 text-zinc-500 flex items-center px-3"
-                      >
-                        <Circle className="size-1.5 text-zinc-500 fill-zinc-500 mr-2" />
-                        {ingredient};
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
-          </ScrollArea>
+
+          <div>
+            <h3 className="font-semibold text-lg">Sobre</h3>
+            <p className="mt-1 text-zinc-500">{product.description}</p>
+            <div className="mt-6"></div>
+            {product.ingredients?.length > 0 && (
+              <>
+                <h3 className="font-semibold text-lg flex items-center gap-2 mb-2">
+                  <Soup />
+                  Ingredientes
+                </h3>
+                <ul>
+                  {product.ingredients?.map((ingredient) => (
+                    <li
+                      key={ingredient}
+                      className="mt-1 text-zinc-500 flex items-center px-3"
+                    >
+                      <Circle className="size-1.5 text-zinc-500 fill-zinc-500 mr-2" />
+                      {ingredient};
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
         </div>
         <button
           className="mt-6 button bg-amber-500 !text-white click w-full px-8 py-2"
