@@ -55,11 +55,12 @@ Bem-vindo ao **FastFood**! Este projeto foi desenvolvido para ajudar você a enc
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
+Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
 
 ---
 
-Desenvolvido por [Yuri Manhiça](https://github.com/yurimanhica-dev) . 🚀
+Desenvolvido por [Yuri Manhiça](https://github.com/yurimanhica-dev). 🚀
 
 ---
 
