@@ -61,6 +61,14 @@ Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para ma
 
 Desenvolvido por [Yuri Manhiça](https://github.com/yurimanhica-dev) . 🚀
 
-## 🌟 Créditos: 
+---
 
-[Felipe Rocha](https://github.com/fullstackclubeducacao) pela FullStack-Club.
+## 🌟 Créditos:
+
+Felipe Rocha pela [FullStack-Club](https://github.com/fullstackclubeducacao).
+
+---
+
+## 🎊 Certificado:
+
+![Certificado](https://dbmib2q8rj.ufs.sh/f/Lm6xK3J7O1CLacYr1tWkXlGrvSZ3eA0bL8isKtgD567W19n2)

@@ -5,7 +5,7 @@ import { createContext, useMemo, useState } from "react";
 
 // 2. Define the CartProduct type that extends the Product
 export interface CartProduct
-  extends Pick<Product, "id" | "name" | "imageUrl" | "price"> {
+  extends Pick<Product, "id" | "name" | "imageUrl" | "price" | "restaurantId"> {
   quantity: number;
 }
 
@@ -16,9 +16,10 @@ export interface ICartContext {
   toggleCart: () => void;
   addProduct: (product: CartProduct) => void;
   subTotal: number;
-  decreseProductQuantity: (productId: string) => void;
+  decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
   removeProducts: (productId: string) => void;
+  toggleDialog: () => void;
 }
 
 // 3. Create the CartContext and CartProvider components, and export them.
@@ -26,9 +27,10 @@ export const CartContext = createContext<ICartContext>({
   isOpen: false,
   products: [],
   toggleCart: () => {},
+  toggleDialog: () => {},
   addProduct: () => {},
   subTotal: 0,
-  decreseProductQuantity: () => {},
+  decreaseProductQuantity: () => {},
   increaseProductQuantity: () => {},
   removeProducts: () => {},
 });
@@ -48,7 +50,19 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setIsOpen((prev) => !prev);
   };
 
+  const toggleDialog = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   const addProduct = (product: CartProduct) => {
+    const hasDifferentRestaurant = products.some(
+      (prevProduct) => prevProduct.restaurantId !== product.restaurantId
+    );
+
+    if(hasDifferentRestaurant){
+      setProducts
+    }
+
     const existingProduct = products.some(
       (prevProduct) => prevProduct.id === product.id
     );
@@ -69,7 +83,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     });
   };
 
-  const decreseProductQuantity = (productId: string) => {
+  const decreaseProductQuantity = (productId: string) => {
     setProducts((prev) => {
       return prev.map((prevProduct) => {
         if (prevProduct.id !== productId) {
@@ -111,9 +125,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         isOpen,
         products,
         toggleCart,
+        toggleDialog,
         addProduct,
         subTotal,
-        decreseProductQuantity,
+        decreaseProductQuantity,
         increaseProductQuantity,
         removeProducts,
       }}

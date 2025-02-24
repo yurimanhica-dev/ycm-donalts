@@ -22,6 +22,13 @@ type MenuCategoryWithProducts = Prisma.MenuCategoryGetPayload<{
 }>;
 
 const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
+  const getStatus = () => {
+    const horaAtual = new Date().getHours();
+    return horaAtual >= 7 && horaAtual < 15;
+  };
+
+  const restaurantTimeOpen = getStatus();
+
   const [selectedCategory, setSelectedCategory] =
     useState<MenuCategoryWithProducts>(restaurant.menuCategories[0]);
 
@@ -54,9 +61,16 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
               5.0
             </div>
           </div>
-          <div className="flex gap-1 justify-start mt-4 text-green-500 text-xs bg-white">
-            <Clock className="w-4 h-4" />
-            <p>Aberto</p>
+          <div className="flex gap-1 justify-start items-center mt-4 text-xs bg-white">
+            <Clock
+              size={18}
+              className={restaurantTimeOpen ? "text-green-500" : "text-red-500"}
+            />
+            <h2
+              className={restaurantTimeOpen ? "text-green-500" : "text-red-500"}
+            >
+              {restaurantTimeOpen ? "Aberto" : "Fechado"}
+            </h2>
           </div>
         </div>
       </div>

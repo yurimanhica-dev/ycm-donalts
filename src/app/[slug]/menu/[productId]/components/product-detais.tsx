@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/cart";
 import CartSheet from "./Cart-sheet";
+import DialogConfirmation from "./dialog-confirmation";
 
 interface ProductDetailsProps {
   product: Prisma.ProductGetPayload<{
@@ -22,7 +23,10 @@ interface ProductDetailsProps {
 }
 
 const ProductDetails = ({ product }: ProductDetailsProps) => {
-  const { toggleCart, addProduct } = useContext(CartContext);
+  const [showCart, setShowCart] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+  const { toggleCart, toggleDialog, addProduct, products } =
+    useContext(CartContext);
 
   const [quantity, setQuantity] = useState<number>(1);
 
@@ -38,9 +42,22 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
     setQuantity((prev) => prev + 1);
   };
   const handleAddProductToCart = () => {
-    addProduct({ ...product, quantity });
-    toggleCart();
+    const hasDifferentRestaurant = products.some(
+      (prevProduct) => prevProduct.restaurantId !== product.restaurantId
+    );
+
+    if (hasDifferentRestaurant) {
+      setShowDialog(true); // Exibe apenas o Dialog
+      setShowCart(false);
+      toggleDialog();
+    } else {
+      addProduct({ ...product, quantity });
+      toggleCart();
+      setShowCart(true); // Exibe apenas o CartSheet
+      setShowDialog(false);
+    }
   };
+
   return (
     <>
       <div className="-mt-6 rounded-4xl bg-white p-5 z-50 relative w-full h-full flex flex-col flex-auto">
@@ -58,7 +75,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           <h2 className="text-2xl font-semibold mt-2">{product.name}</h2>
           <div className="flex items-center justify-between mt-2">
             <p className="text-xl font-semibold">
-              {formatCurrency(product.price)}
+              Preço: {formatCurrency(product.price)}
             </p>
             <div className="flex space-x-3 text-center items-center ">
               <button
@@ -78,9 +95,9 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           </div>
 
           <div>
-            <h3 className="font-semibold text-lg">Sobre</h3>
+            <h3 className="font-semibold text-lg mt-2">Sobre</h3>
             <p className="mt-1 text-zinc-500">{product.description}</p>
-            <div className="mt-6"></div>
+            <div className="mt-4"></div>
             {product.ingredients?.length > 0 && (
               <>
                 <h3 className="font-semibold text-lg flex items-center gap-2 mb-2">
@@ -109,7 +126,14 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           Adicionar á Sacola
         </button>
       </div>
-      <CartSheet />
+      {showCart && <CartSheet />}
+      {showDialog && (
+        <DialogConfirmation
+          key={product.id}
+          product={product}
+          quantity={quantity}
+        />
+      )}
     </>
   );
 };

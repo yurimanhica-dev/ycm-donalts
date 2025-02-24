@@ -11,13 +11,13 @@ interface CartProductItemsProps {
 }
 
 const CartProductItems = ({ cartProduct }: CartProductItemsProps) => {
-  const { decreseProductQuantity, increaseProductQuantity, removeProducts } =
+  const { decreaseProductQuantity, increaseProductQuantity, removeProducts } =
     useContext(CartContext);
 
   return (
-    <div className="justify-between items-center flex space-y-2 gap-6">
+    <div className="justify-between items-center flex gap-6 space-y-4">
       <div className=" flex gap-3 items-center text-start ">
-        <div className="relative h-20 w-20">
+        <div className="relative h-20 w-20 ">
           <Image
             src={cartProduct.imageUrl}
             alt={cartProduct.name}
@@ -33,7 +33,7 @@ const CartProductItems = ({ cartProduct }: CartProductItemsProps) => {
           <div className="flex space-x-3 text-center items-center ">
             <button
               className="border border-zinc-300 p-0.5 !rounded-lg click cursor-pointer"
-              onClick={() => decreseProductQuantity(cartProduct.id)}
+              onClick={() => decreaseProductQuantity(cartProduct.id)}
             >
               <ChevronLeftIcon size={22} />
             </button>

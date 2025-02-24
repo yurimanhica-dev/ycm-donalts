@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { db } from "../../../../../lib/prisma";
-import ProductDetais from "./components/product-detais";
+import ProductDetails from "./components/product-detais";
 import ProductHeader from "./components/product-header";
 
 interface ProductPageProps {
@@ -31,8 +31,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   return (
     <div className="flex flex-col h-full">
       <ProductHeader product={product} />
-      {/* Product details */}
-      <ProductDetais product={product} />
+      <ProductDetails product={product} />
     </div>
   );
 };
