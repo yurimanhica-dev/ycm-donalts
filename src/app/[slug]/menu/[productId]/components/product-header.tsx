@@ -12,7 +12,7 @@ const ProductHeader = ({ product }: ProductHeaderProps) => {
   const router = useRouter();
   const handleBack = () => router.back();
   return (
-    <div className="relative w-full min-h-[300px] bg-zinc-200">
+    <div className="relative w-full min-h-[300px] bg-zinc-200 md:h-[400px]">
       <Image
         src={product.imageUrl}
         alt={product.name}

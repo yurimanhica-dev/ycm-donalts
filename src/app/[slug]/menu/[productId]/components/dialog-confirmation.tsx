@@ -10,7 +10,7 @@ import {
   AlertDialogTrigger,
 } from "@/app/components/ui/alert-dialog";
 import { Product } from "@prisma/client";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/cart";
 import CartSheet from "./Cart-sheet";
 
@@ -20,17 +20,18 @@ interface DialogConfirmationProps {
 }
 
 const DialogConfirmation = ({ product, quantity }: DialogConfirmationProps) => {
-  const { isOpen, toggleCart, toggleDialog, addProduct } =
-    useContext(CartContext);
+  const { isOpen, addProduct } = useContext(CartContext);
+  const [showCart, setShowCart] = useState(false);
 
   const addProductToCart = () => {
     addProduct({ ...product, quantity });
-    toggleCart();
-    console.log(product, quantity);
+    //toggleDialog();
+    setShowCart(true);
   };
+
   return (
     <>
-      <AlertDialog open={isOpen} onOpenChange={toggleDialog}>
+      <AlertDialog open={isOpen}>
         <AlertDialogTrigger asChild></AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -49,14 +50,14 @@ const DialogConfirmation = ({ product, quantity }: DialogConfirmationProps) => {
             <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction
               onClick={addProductToCart}
-              className="bg-amber-500 hover:bg-amber-400"
+              className="bg-amber-500 hover:bg-amber-400 cursor-pointer"
             >
               Confirmar
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-      <CartSheet />
+      {showCart && <CartSheet />}
     </>
   );
 };

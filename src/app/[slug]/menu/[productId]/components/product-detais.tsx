@@ -2,7 +2,7 @@
 
 import { formatCurrency } from "@/helpers/format-currency";
 import { Prisma } from "@prisma/client";
-import { ChevronLeftIcon, ChevronRightIcon, Circle, Soup } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, Circle } from "lucide-react";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/cart";
@@ -60,7 +60,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
 
   return (
     <>
-      <div className="-mt-6 rounded-4xl bg-white p-5 z-50 relative w-full h-full flex flex-col flex-auto">
+      <div className="-mt-6 md:-mt-4 rounded-4xl bg-white p-5 z-50 relative w-full h-full flex flex-col flex-auto">
         <div className="flex-auto h-full">
           <div className="flex items-center gap-2">
             <Image
@@ -72,9 +72,9 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             />
             <p className="text-gray-500 text-sm">{product.restaurant.name}</p>
           </div>
-          <h2 className="text-2xl font-semibold mt-2">{product.name}</h2>
+          <h2 className="text-xl font-semibold mt-2">{product.name}</h2>
           <div className="flex items-center justify-between mt-2">
-            <p className="text-xl font-semibold">
+            <p className="text-2xl font-bold text-red-500">
               Preço: {formatCurrency(product.price)}
             </p>
             <div className="flex space-x-3 text-center items-center ">
@@ -95,20 +95,19 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           </div>
 
           <div>
-            <h3 className="font-semibold text-lg mt-2">Sobre</h3>
-            <p className="mt-1 text-zinc-500">{product.description}</p>
+            <h3 className="font-semibold mt-6">Sobre</h3>
+            <p className="mt-1 text-sm text-zinc-500">{product.description}</p>
             <div className="mt-4"></div>
             {product.ingredients?.length > 0 && (
               <>
-                <h3 className="font-semibold text-lg flex items-center gap-2 mb-2">
-                  <Soup />
+                <h3 className="font-semibold mt-8 flex items-center gap-2 mb-2">
                   Ingredientes
                 </h3>
                 <ul>
                   {product.ingredients?.map((ingredient) => (
                     <li
                       key={ingredient}
-                      className="mt-1 text-zinc-500 flex items-center px-3"
+                      className="mt-1 text-zinc-500 text-sm flex items-center px-3"
                     >
                       <Circle className="size-1.5 text-zinc-500 fill-zinc-500 mr-2" />
                       {ingredient};
@@ -120,7 +119,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           </div>
         </div>
         <button
-          className="mt-4 button bg-amber-500 !text-white click w-full px-8 py-2"
+          className="click cursor-pointer bg-amber-500 !text-white w-full px-8 py-2 rounded-2xl h-[38px] "
           onClick={handleAddProductToCart}
         >
           Adicionar á Sacola

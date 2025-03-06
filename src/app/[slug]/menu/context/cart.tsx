@@ -16,6 +16,7 @@ export interface ICartContext {
   toggleCart: () => void;
   addProduct: (product: CartProduct) => void;
   subTotal: number;
+  iva: number;
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
   removeProducts: (productId: string) => void;
@@ -30,6 +31,7 @@ export const CartContext = createContext<ICartContext>({
   toggleDialog: () => {},
   addProduct: () => {},
   subTotal: 0,
+  iva: 0,
   decreaseProductQuantity: () => {},
   increaseProductQuantity: () => {},
   removeProducts: () => {},
@@ -45,6 +47,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     }, 0);
   }, [products]);
 
+  const iva = useMemo(() => {
+    return subTotal * 0.17;
+  }, [subTotal]);
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleCart = () => {
     setIsOpen((prev) => !prev);
@@ -55,31 +61,26 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const addProduct = (product: CartProduct) => {
-    const hasDifferentRestaurant = products.some(
-      (prevProduct) => prevProduct.restaurantId !== product.restaurantId
-    );
-
-    if(hasDifferentRestaurant){
-      setProducts
-    }
-
-    const existingProduct = products.some(
-      (prevProduct) => prevProduct.id === product.id
-    );
-    if (!existingProduct) {
-      return setProducts((prev) => [...prev, product]);
-    }
-
     setProducts((prev) => {
-      return prev.map((prevProduct) => {
-        if (prevProduct.id === product.id) {
-          return {
-            ...prevProduct,
-            quantity: prevProduct.quantity + product.quantity,
-          };
-        }
-        return prevProduct;
-      });
+      const hasDifferentRestaurant = prev.some(
+        (p) => p.restaurantId !== product.restaurantId
+      );
+
+      if (hasDifferentRestaurant) {
+        return [product]; // Limpa o carrinho e adiciona o novo produto
+      }
+
+      const existingProduct = prev.find((p) => p.id === product.id);
+
+      if (!existingProduct) {
+        return [...prev, product];
+      }
+
+      return prev.map((p) =>
+        p.id === product.id
+          ? { ...p, quantity: p.quantity + product.quantity }
+          : p
+      );
     });
   };
 
@@ -128,6 +129,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         toggleDialog,
         addProduct,
         subTotal,
+        iva,
         decreaseProductQuantity,
         increaseProductQuantity,
         removeProducts,
